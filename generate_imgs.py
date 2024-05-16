@@ -30,6 +30,8 @@ with distributed_state.split_between_processes(list(range(0, len(class_list), 1)
     for i in tqdm(indexes):
         cls = class_list[i]
 
+        prompt = '{}, aerial view, satellite, high resolution, 4K, photorealistic'.format(cls.replace("_", " "))
+
         if cls == 'runway':
             prompt = 'airport runway, satellite, high resolution, 4K, photorealistic'
 
@@ -39,14 +41,12 @@ with distributed_state.split_between_processes(list(range(0, len(class_list), 1)
         else if cls == 'ground_track_field':
             prompt = 'ground track and field, satellite, high resolution, 4K, photorealistic'
         
-        # if cls == 'commercial_area':
-        #     prompt = 'metropolitan, commerical area, satellite, high resolution, 4K, photorealistic'
+        if cls == 'commercial_area':
+            prompt = 'metropolitan, commerical area, satellite, high resolution, 4K, photorealistic'
             
-        # if cls == 'chaparral':
-        #     prompt = 'brushland, satellite, high resolution, 4K, photorealistic'
-        else:
-            continue
-        #prompt = '{}, aerial view, satellite, high resolution, 4K, photorealistic'.format(cls.replace("_", " "))
+        if cls == 'chaparral':
+            prompt = 'brushland, satellite, high resolution, 4K, photorealistic'
+                  
         formatted_numbers = [f"{num:03}" for num in range(1, 701)]
         for j in tqdm(formatted_numbers):
             generator = torch.Generator(device="cuda").manual_seed(randint(100000, 9999999))
@@ -58,7 +58,3 @@ with distributed_state.split_between_processes(list(range(0, len(class_list), 1)
                        guidance_scale=0.0,
                        generator=generator).images[0].resize((256,256))
             out.save(output_path) 
-            
-            
-        
-
