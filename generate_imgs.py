@@ -15,7 +15,7 @@ class_list = ["airplane", "airport", "baseball_diamond", "basketball_court", "be
           "railway", "railway_station", "rectangular_farmland", "river", "roundabout", "runway", "sea_ice",
           "ship", "snowberg", "sparse_residential", "stadium", "storage_tank", "tennis_court", "terrace",
           "thermal_power_station", "wetland"]
-output_dir = '/nfs/bigiris.cs.stonybrook.edu/rraina/resisc45_sdxl/'
+output_dir = '../resisc45_sdxl/'
 os.makedirs(output_dir, exist_ok=True)
 for k in class_list:
     os.makedirs(os.path.join(output_dir, k), exist_ok=True)
