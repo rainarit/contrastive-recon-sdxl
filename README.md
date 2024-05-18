@@ -47,7 +47,7 @@ OMP_NUM_THREADS=1 python -m torch.distributed.launch --nproc_per_node=8 main_lin
 --data_path path_to_your_dataset \
 --output_dir path_to_your_output_dir \
 --log_dir path_to_your_log_dir \
---epochs 50 --blr 2.5 --dist_eval 
+--epochs 50 --blr 1.0 --dist_eval 
 ```
 
 ** Disclaimer: We used a pre-trained masked ViT-B encoder when we did model pre-training (you can find the checkpoint weights over here: https://dl.fbaipublicfiles.com/mae/pretrain/mae_pretrain_vit_base.pth)
